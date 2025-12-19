@@ -1,0 +1,394 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* Alterado para tema preto puro */
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a0a0a 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estrelas animadas no fundo */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stars::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent), radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent), radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent), radial-gradient(1px 1px at 15% 90%, white, transparent);
+  background-size: 200% 200%;
+  animation: twinkle 8s ease-in-out infinite;
+  /* Aumentado opacidade das estrelas para tema escuro */
+  opacity: 0.8;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.container {
+  /* Container com fundo preto semi-transparente */
+  background: rgba(10, 10, 10, 0.95);
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  backdrop-filter: blur(10px);
+  /* Borda em verde neon para destaque */
+  border: 2px solid #00ff88;
+}
+
+.screen {
+  display: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tela Inicial */
+.logo-container {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* Removido o genie-icon e adicionado estilo para título chamativo */
+.title {
+  font-size: 3.5rem;
+  /* Título em verde neon brilhante */
+  color: #00ff88;
+  margin: 40px 0 20px 0;
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88, 0 0 40px #00ff88;
+  font-weight: 900;
+  letter-spacing: 3px;
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Animação de brilho para o título */
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88, 0 0 40px #00ff88;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88, 0 0 40px #00ff88, 0 0 50px #00ff88, 0 0 60px #00ff88;
+  }
+}
+
+/* Novo estilo para subtítulo maior */
+.subtitle-large {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.btn-start,
+.btn-restart {
+  /* Botão em verde neon para combinar com o tema */
+  background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+  color: #000000;
+  border: none;
+  padding: 18px 60px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+  letter-spacing: 2px;
+}
+
+.btn-start:hover,
+.btn-restart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6);
+  background: linear-gradient(135deg, #00ffaa 0%, #00dd7a 100%);
+}
+
+.btn-start:active,
+.btn-restart:active {
+  transform: translateY(-1px);
+}
+
+/* Tela de Quiz */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  /* Fundo preto para barra de progresso */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-fill {
+  height: 100%;
+  /* Barra de progresso em verde neon */
+  background: linear-gradient(90deg, #00ff88 0%, #00cc6a 100%);
+  width: 20%;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.question-counter {
+  text-align: center;
+  font-size: 1.1rem;
+  /* Contador em verde neon */
+  color: #00ff88;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.genie-small {
+  text-align: center;
+  font-size: 60px;
+  margin: 20px 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.question-container {
+  margin-top: 30px;
+}
+
+.question {
+  font-size: 1.5rem;
+  /* Pergunta em branco puro */
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.option {
+  /* Opções com fundo preto e borda verde */
+  background: rgba(10, 10, 10, 0.9);
+  border: 3px solid rgba(0, 255, 136, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  /* Texto em branco */
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.option::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  /* Efeito hover em verde neon */
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.option:hover {
+  /* Hover em verde neon */
+  border-color: #00ff88;
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 255, 136, 0.5);
+  background: rgba(20, 20, 20, 0.9);
+}
+
+.option.correct {
+  background: #4caf50;
+  border-color: #4caf50;
+  color: white;
+  animation: correctAnswer 0.5s ease;
+}
+
+.option.wrong {
+  background: #f44336;
+  border-color: #f44336;
+  color: white;
+  animation: wrongAnswer 0.5s ease;
+}
+
+.option.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@keyframes correctAnswer {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes wrongAnswer {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+/* Tela de Resultado */
+.result-container {
+  text-align: center;
+}
+
+.result-icon {
+  font-size: 120px;
+  margin-bottom: 20px;
+  animation: bounceIn 0.8s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.result-title {
+  font-size: 2.5rem;
+  /* Título do resultado em verde neon */
+  color: #00ff88;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px #00ff88;
+}
+
+.result-score {
+  font-size: 1.5rem;
+  /* Pontuação em branco */
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.result-score span {
+  font-weight: bold;
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.result-message {
+  /* Mensagem com fundo preto e borda verde */
+  background: rgba(0, 255, 136, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 30px 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1.6;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.btn-restart {
+  margin-top: 30px;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .question {
+    font-size: 1.2rem;
+  }
+
+  .option {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .genie-icon {
+    font-size: 80px;
+  }
+
+  .result-title {
+    font-size: 2rem;
+  }
+}

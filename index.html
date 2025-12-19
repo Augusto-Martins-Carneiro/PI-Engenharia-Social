@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Engenharia Social</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <!-- Tela Inicial -->
+        <div id="start-screen" class="screen active">
+            <div class="logo-container">
+                <div class="genie-icon">🧞‍♂️</div>
+                <h1 class="title">Vamos Começar</h1>
+            </div>
+            <p class="subtitle">Teste seus conhecimentos sobre segurança digital!</p>
+            <button class="btn-start" onclick="startQuiz()">COMEÇAR</button>
+        </div>
+
+        <!-- Tela de Perguntas -->
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <div class="question-counter">
+                <span id="current-question">1</span> / <span id="total-questions">5</span>
+            </div>
+            
+            <div class="genie-small">🧞‍♂️</div>
+            
+            <div class="question-container">
+                <h2 class="question" id="question-text"></h2>
+                <div class="options" id="options-container"></div>
+            </div>
+        </div>
+
+        <!-- Tela de Resultado -->
+        <div id="result-screen" class="screen">
+            <div class="result-container">
+                <div class="result-icon" id="result-icon"></div>
+                <h2 class="result-title" id="result-title"></h2>
+                <p class="result-score">
+                    Você acertou <span id="score">0</span> de <span id="total">5</span> perguntas
+                </p>
+                <div class="result-message" id="result-message"></div>
+                <button class="btn-restart" onclick="restartQuiz()">JOGAR NOVAMENTE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
