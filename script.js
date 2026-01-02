@@ -127,11 +127,11 @@ function showResults() {
   if (percentage === 100) {
     icon = "🏆"
     title = "EXCELENTE!"
-    message = "Parabéns! Você é um expert em segurança digital! Continue sempre atento aos golpes de engenharia social."
+    message = "Parabéns! Você tem um elevado conhecimento na segurança digital! Continue sempre atento aos golpes de engenharia social."
   } else if (percentage >= 80) {
     icon = "🌟"
     title = "MUITO BOM!"
-    message = "Você tem um ótimo conhecimento sobre engenharia social! Algumas revisões e você será um expert."
+    message = "Você tem um ótimo conhecimento sobre engenharia social! Algumas revisões e você será não cairá em golpes."
   } else if (percentage >= 60) {
     icon = "👍"
     title = "BOM!"
